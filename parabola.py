@@ -17,7 +17,7 @@ def sgn(n):
         return '-'
 
 
-class parabola(object):
+class Parabola(object):
 
     ''' Class to define a parabola based on its coefficients and calculate its roots '''
 
@@ -28,6 +28,10 @@ class parabola(object):
         self.c = c              # Constant
         self.d = b*b - 4*a*c    # Discriminant
 
+    def y(self, x):
+        ''' returns the y value of the Parabola at x '''
+        return self.a*x*x + self.b*x + self.c
+
     @property
     def root1(self):
         ''' Calculate the first root '''
@@ -37,7 +41,7 @@ class parabola(object):
             if self.d == 0:
                 return (-self.b/(2*self.a))
             elif self.d > 0:
-                return (-self.b + math.sqrt(self.d)) / (2*self.a)
+                return (-self.b - math.sqrt(self.d)) / (2*self.a)
             else:
                 return complex(-self.b/(2*self.a), (math.sqrt(-self.d))/(2*self.a))
 
@@ -50,22 +54,9 @@ class parabola(object):
             if self.d == 0:
                 return (-self.b/(2*self.a))
             elif self.d > 0:
-                return (-self.b - math.sqrt(self.d)) / (2*self.a)
+                return (-self.b + math.sqrt(self.d)) / (2*self.a)
             else:
                 return complex(-self.b/(2*self.a), -(math.sqrt(-self.d))/(2*self.a))
-
-    def __str__(self):
-        ''' Create a string to describe this class '''
-        if self.a == 0:
-            if self.b == 1:
-                return f'x {sgn(self.c)} {abs(self.c)} = 0'
-            else:
-                return f'{self.b}x {sgn(self.c)} {abs(self.c)} = 0'
-        else:
-            if self.a == 1:
-                return f'x2 + {self.b}x + {self.c} = 0'
-            else:
-                return f'{self.a}x2 + {self.b}x + {self.c} = 0'
 
     @property
     def root_type(self):
@@ -80,12 +71,33 @@ class parabola(object):
         else:
             return "Complex"
 
+    @property
+    def turning_point(self):
+        ''' calculate the turning point (maximum or minimum) position as (x, y) '''
+        if self.d > 0:
+            x = -self.b/(2*self.a)
+            y = self.a*x*x + self.b*x + self.c
+            return (x, y)
+
+    def __str__(self):
+        ''' Create a string to describe this class '''
+        if self.a == 0:
+            if self.b == 1:
+                return f'x {sgn(self.c)} {abs(self.c)} = 0'
+            else:
+                return f'{self.b}x {sgn(self.c)} {abs(self.c)} = 0'
+        else:
+            if self.a == 1:
+                return f'x2 + {self.b}x + {self.c} = 0'
+            else:
+                return f'{self.a}x2 + {self.b}x + {self.c} = 0'
+
 
 def main():
-    p_linear = parabola(0, 1, -1)
-    p_equal = parabola(1, -6, 9)
-    p_real = parabola(1, -7, 10)
-    p_complex = parabola(3, -6, 4)
+    p_linear = Parabola(0, 1, -1)
+    p_equal = Parabola(1, -6, 9)
+    p_real = Parabola(1, -7, 10)
+    p_complex = Parabola(3, -6, 4)
 
     print(p_linear)
     print(f'Root is {p_linear.root_type}')
