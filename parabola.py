@@ -102,15 +102,11 @@ def main():
     print(p_linear)
     print(f'Root is {p_linear.root_type}')
     print(f'\troot = {p_linear.root1}')
-    # print(f'\troot1 = {p_linear.root1}')
-    # print(f'\troot2 = {p_linear.root2}')
     print()
 
     print(p_equal)
     print(f'Roots are {p_equal.root_type}')
     print(f'\troot  = {p_equal.root1}')
-    # print(f'\troot1 = {p_equal.root1}')
-    # print(f'\troot2 = {p_equal.root2}')
     print()
 
     print(p_real)
