@@ -1,6 +1,5 @@
 import parabola as prb
 from matplotlib import pyplot as plt
-
 # help(parabola)
 
 
@@ -25,18 +24,15 @@ def main():
         # distance between the roots
         x_lower = p_real.root1 - 2 * dist_root1_root2
         x_upper = p_real.root2 + 2 * dist_root1_root2
-
         step = (x_upper - x_lower) / N
-
+        # Define lists to store the coordinates of the points
         x = []
         y = []
-
+        # Generate the N point coordinates
         for i in range(0, N):
-            x.append(x_lower + i * step)
-            y.append(p_real.y(x_lower + i * step))
-
-        # print(x)
-        # print(y)
+            xi = x_lower + i * step
+            x.append(xi)
+            y.append(p_real.y(xi))
 
         # Set the plot style
         plt.style.use('fivethirtyeight')
