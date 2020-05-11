@@ -1,16 +1,16 @@
-import math
-
 """
 Solves the parabolic equation
       2
     ax + bx + c = 0
-    
-    Roots are classified as Linear (a = 0), equal, real and complex.
-    
+
+    Roots are classified as Linear (a = 0), equal, real or complex.
+
 """
+import math
 
 
 def sgn(n):
+    ''' Return a '+' or a '-' based on the sign of n '''
     if n >= 0:
         return '+'
     else:
@@ -18,6 +18,8 @@ def sgn(n):
 
 
 class parabola(object):
+
+    ''' Class to define a parabola based on its coefficients and calculate its roots '''
 
     def __init__(self, a, b, c):
         ''' Set a, b, c and d (discriminant) for the class '''
