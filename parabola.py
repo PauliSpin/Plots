@@ -20,6 +20,7 @@ def sgn(n):
 class parabola(object):
 
     def __init__(self, a, b, c):
+        ''' Set a, b, c and d (discriminant) for the class '''
         self.a = a              # Coefficient of x2
         self.b = b              # Coefficient of x
         self.c = c              # Constant
@@ -27,6 +28,7 @@ class parabola(object):
 
     @property
     def root1(self):
+        ''' Calculate the first root '''
         if self.a == 0:
             return -self.c/self.b
         else:
@@ -39,6 +41,7 @@ class parabola(object):
 
     @property
     def root2(self):
+        ''' Calculate the second root '''
         if self.a == 0:
             return -self.c/self.b
         else:
@@ -50,6 +53,7 @@ class parabola(object):
                 return complex(-self.b/(2*self.a), -(math.sqrt(-self.d))/(2*self.a))
 
     def __str__(self):
+        ''' Create a string to describe this class '''
         if self.a == 0:
             if self.b == 1:
                 return f'x {sgn(self.c)} {abs(self.c)} = 0'
@@ -63,7 +67,7 @@ class parabola(object):
 
     @property
     def root_type(self):
-
+        ''' Return string to describe the type of roots for this class '''
         if self.a == 0:
             return "Linear"
 
@@ -78,7 +82,7 @@ class parabola(object):
 def main():
     p_linear = parabola(0, 1, -1)
     p_equal = parabola(1, -6, 9)
-    p_distinct = parabola(1, -7, 10)
+    p_real = parabola(1, -7, 10)
     p_complex = parabola(3, -6, 4)
 
     print(p_linear)
